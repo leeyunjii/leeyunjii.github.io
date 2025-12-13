@@ -1,34 +1,69 @@
-name: Deploy GitHub Pages
+name: Deploy GitHub Pageson:
 
-on:
-  push:
-    branches: [ main ]
-  workflow_dispatch:
+push:
 
-permissions:
-  contents: read
-  pages: write
-  id-token: write
+branches: [ main ]
 
-jobs:
-  deploy:
-    runs-on: ubuntu-latest
+workflow_dispatch:permissions:
 
-    steps:
-      # 1️⃣ 레포 체크아웃
-      - name: Checkout
-        uses: actions/checkout@v4
+contents: read
 
-      # 2️⃣ GitHub Pages 설정
-      - name: Setup Pages
-        uses: actions/configure-pages@v3
+pages: write
 
-      # 3️⃣ Pages에 올릴 파일 업로드 (artifact)
-      - name: Upload Pages artifact
-        uses: actions/upload-pages-artifact@v3
-        with:
-          path: .
+id-token: writejobs:
 
-      # 4️⃣ Pages 배포
-      - name: Deploy to GitHub Pages
-        uses: actions/deploy-pages@v2
+deploy:
+
+# ▼▼▼ 이 부분이 빠져서 오류가 난 것이다. 반드시 추가해야 한다. ▼▼▼
+
+environment:
+
+name: github-pages
+
+url: ${{ steps.deployment.outputs.page_url }}
+
+# ▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲▲
+
+
+
+runs-on: ubuntu-latest
+
+
+
+steps:
+
+# 1️⃣ 레포 체크아웃
+
+- name: Checkout
+
+uses: actions/checkout@v4
+
+
+
+# 2️⃣ GitHub Pages 설정
+
+- name: Setup Pages
+
+uses: actions/configure-pages@v3
+
+
+
+# 3️⃣ Pages에 올릴 파일 업로드 (artifact)
+
+- name: Upload Pages artifact
+
+uses: actions/upload-pages-artifact@v3
+
+with:
+
+path: .
+
+
+
+# 4️⃣ Pages 배포
+
+- name: Deploy to GitHub Pages
+
+id: deployment # <--- URL 출력을 위해 id 추가가 필요하다.
+
+uses: actions/deploy-pages@v2
