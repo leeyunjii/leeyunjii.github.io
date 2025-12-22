@@ -9672,3 +9672,23 @@ textarea.form-control {
   100% {
     stroke-dasharray: 89, 200;
     stroke-dashoffset: -136px; } }
+
+
+/* ===== Profile Image Card ===== */
+.profile-card {
+  background: #ffffff;
+  padding: 14px;              /* 흰 테두리 두께 */
+  border-radius: 14px;
+  box-shadow: 0 12px 30px rgba(0,0,0,0.15);
+  max-width: 320px;
+  margin: auto;
+}
+
+.profile-img {
+  width: 100%;
+  height: auto;
+  object-fit: contain;        /* 절대 안 잘림 */
+  border-radius: 10px;
+  display: block;
+  filter: contrast(1.05) brightness(1.02); /* 선명도 */
+}
