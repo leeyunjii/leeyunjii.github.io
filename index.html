@@ -270,7 +270,7 @@
 								<span class="flaticon-ideas"></span>
 							</div>
 							<div class="text pl-3">
-								<span class="date">2025.09 ~ 2025.10 (1人 개인 프로젝트)</span>
+								<span class="date">2025.09.26 ~ 2025.10.01 (1人 개인 프로젝트)</span>
 								<h2>RV32I기반 Single Cycle CPU 설계</h2>        
 								<div class="project-image my-3">
 									<img src="images/riscv.PNG" alt="RISC-V 프로젝트 요약" style="width: 100%; border: 1px solid #eee;">
@@ -660,22 +660,6 @@
 					<li>Vivado 환경에서 모든 명령어 Simulation 및 동작 검증</li>
 				</ul>
 				<hr>
-				
-				<h4>트러블 슈팅</h4>
-				<h5> sb, sh, lb, lh 명령어 구현 </h5>
-				<p>
-					<strong class="text-dark">문제 상황:</strong>
-				</p>
-				<ul>
-					<li>RAM에 word 단위로 접근이 아닌 byte, half 단위로 접근했을 때, 하위 바이트에만 접근할 수 있는 문제가 발생</li>
-				</ul>
-				<p>
-					<strong class="text-dark">해결 방법:</strong>
-				</p>
-				<ul>
-					<li>주소 비트의 하위 2비트는 byte offset으로 사용하여 8바이트 모든 바이트에 접근할 수 있도록 설계</li>
-				</ul>
-
 				<h4>고찰</h4>
 				<p>
 					RISC-V 프로세서의 핵심 요소인 데이터패스와 제어 신호를 설계하며 실질적인 하드웨어 설계 역량을 함양했습니다. 나아가 C 코드가 명령어로 변환되는 과정을 추적하며, 명령어 타입별 기능과 용도를 하드웨어 구조와 연관 지어 깊이 있게 이해할 수 있었습니다.
