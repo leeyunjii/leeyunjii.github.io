@@ -754,31 +754,6 @@
                     <li>Polling 방식의 C Application을 작성하여 FND 제어 수행 </li>
                 </ul>
                 <hr>
-                
-                <h4>트러블 슈팅</h4>
-                <h5>HW-SW 신호 동기화 </h5>
-                <p>
-                    <strong class="text-dark">문제 상황:</strong>
-                </p>
-                <ul>
-                    <li>Logic Analyzer에서는 I2C TX_DONE 신호가 정상적으로 발생했으나, MicroBlaze의 C 코드에서는 해당 신호를 감지하지 못하고 무한 대기하는 현상 발생 </li>
-                </ul>
-                <p>
-                    <strong class="text-dark">원인 분석:</strong>
-                </p>
-                <ul>
-                    <li>하드웨어에서 발생하는 done 펄스 폭이 너무 짧아, 소프트웨어의 Polling Loop가 해당 타이밍을 놓치는 문제 확인 </li>
-                </ul>
-                <p>
-                    <strong class="text-dark">해결 방법:</strong>
-                </p>
-                <ul>
-                    <li>1 클럭 펄스를 유지하는 대신, <strong>Sticky Flag 레지스터</strong>를 구현 </li>
-                    <li>하드웨어가 bit를 set(1)하면 계속 유지되고, 소프트웨어가 확인 후 직접 clear(0)하는 <strong>Write-1-to-Clear</strong> 방식 적용으로 해결</li>
-                </ul>
-
-                <hr>
-
                 <h4>고찰</h4>
                 <details>
                     <summary style="cursor: pointer; color: #007bff; font-weight: bold;"> 자세히 보기</summary>
